@@ -11,7 +11,7 @@
 
   <body>
     <!--ヘッダーの記述-->
-    <<header class="navbar navbar-fixed-top navbar-inverse">
+    <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
 
         <nav class="nav navbar-nav navbar-left">
@@ -21,7 +21,7 @@
           <ul class="nav navbar-nav navbar-right">
             <!--if文でサインインとアウト時の表示を変更-->
             <% if user_signed_in? %>
-            <li><%= link_to ' home', user_path(current_user), class: 'glyphicon glyphicon-home home' %></li>
+            <li><%= link_to ' home', user_path(current_user.id), class: 'glyphicon glyphicon-home home' %></li>
             <li><%= link_to ' users', users_path, class: 'glyphicon glyphicon-user users' %></li>
             <li><%= link_to ' books', books_path, class: 'glyphicon glyphicon-book books' %></li>
             <li><%= link_to ' log out', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
@@ -39,7 +39,7 @@
     <!--ヘッダーの記述-->
     <div class="container">
       <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
-
+    <%= yield %>
     </div>
   </body>
 </html>

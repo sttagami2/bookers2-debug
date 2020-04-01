@@ -50,19 +50,23 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  # gem 'selenium-webdriver'
-  # gem 'chromedriver-helper'
-  # Easy installation and use of chromedriver to run system tests with Chrome
+  # # Adds support for Capybara system testing and selenium driver
+  # gem 'capybara', '>= 2.15'
+  # # gem 'selenium-webdriver'
+  # # gem 'chromedriver-helper'
+  # # Easy installation and use of chromedriver to run system tests with Chrome
   
-  # 下の６つのgemを追加する
+  # # 下の６つのgemを追加する
+  # gem 'rspec-rails'
+  # gem "factory_bot_rails"
+  # gem 'rspec-parameterized'
+  # gem 'faker' #ランダム値の生成
+  # gem 'shoulda-matchers'
+  # gem 'rails-controller-testing'
+  gem 'capybara', '>= 2.15'
   gem 'rspec-rails'
   gem "factory_bot_rails"
-  gem 'rspec-parameterized'
-  gem 'faker' #ランダム値の生成
-  gem 'shoulda-matchers'
-  gem 'rails-controller-testing'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -72,5 +76,6 @@ gem 'devise'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
-
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
+gem 'pry-rails'

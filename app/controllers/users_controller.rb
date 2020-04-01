@@ -7,20 +7,29 @@ class UsersController < ApplicationController
   	@book = Book.new #new bookの新規投稿で必要（保存処理はbookコントローラー側で実施）
   end
 
-  def index
+	def index
+		@user = current_user
   	@users = User.all #一覧表示するためにUserモデルのデータを全て変数に入れて取り出す。
   	@book = Book.new #new bookの新規投稿で必要（保存処理はbookコントローラー側で実施）
+	end
 
   def edit
-  	@user = User.find(params[:id])
+		@user = User.find(params[:id])
+		# @book = @user.books
+		@book = @user.books
+		if @user == current_user
+			render :edit
+		else
+			redirect_to user_path(current_user.id)
+		end
   end
 
   def update
   	@user = User.find(params[:id])
   	if @user.update(user_params)
   		redirect_to users_path(@user), notice: "successfully updated user!"
-  	else
-  		render "show"
+		else
+  		render :edit
   	end
   end
 
