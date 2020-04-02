@@ -1,3 +1,13 @@
+<!-- エラーメッセージ表示-->
+<% if @book.errors.any? %>
+	<h3><%= @book.errors.count %>error occurrence</h3><!--エラーメッセ-->
+	<ul>
+		<% @book.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+<% end %>
+<!-- エラーメッセージ表示-->
 
 <div class="row">
 	<div class="col-xs-3">
@@ -23,7 +33,7 @@
 					</td>
 					<td><%= link_to @book.title, @book %></td>
 					<td><%= @book.body %></td>
-					<% if @book.user_id == current_user.id %>
+					<% if @book.user == current_user %>
 						<td><%= link_to "Edit",edit_book_path(@book), class: "btn-sm btn-success edit_book_#{@book.id}" %></td>
 						<td><%= link_to "Destroy",@book, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@book.id}" %></td>
 					<% end %>
